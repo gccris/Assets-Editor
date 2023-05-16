@@ -20,13 +20,13 @@
         <Button Style="{StaticResource MaterialDesignIconButton}" materialDesign:RippleAssist.IsDisabled="True" Margin="468,37,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="55" Width="55" Click="SelectAssetsFolder">
             <materialDesign:PackIcon  Kind="CardSearch" Height="40" Width="40" />
         </Button>
-        <StackPanel Margin="159,92,0,0" HorizontalAlignment="Left" >
+        <StackPanel Margin="22,139,0,74" HorizontalAlignment="Left" >
             <Label Content="Objects:"/>
             <Label Content="Outfits:"/>
             <Label Content="Effects:"/>
             <Label Content="Missiles:"/>
         </StackPanel>
-        <StackPanel Margin="219,92,0,0" HorizontalAlignment="Left">
+        <StackPanel Margin="82,139,0,74" HorizontalAlignment="Left">
             <Label x:Name="ObjectsCount"/>
             <Label x:Name="OutfitsCount"/>
             <Label x:Name="EffectsCount"/>
@@ -40,5 +40,21 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+        <TextBox x:Name="AssetsPath_Original" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top" Width="330" IsEnabled="False"/>
+        <Button Style="{StaticResource MaterialDesignIconButton}" materialDesign:RippleAssist.IsDisabled="True" Margin="468,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="55" Width="55" Click="SelectAssetsFolderOriginal">
+            <materialDesign:PackIcon  Kind="CardSearch" Height="40" Width="40" />
+        </Button>
+        <StackPanel Margin="434,139,0,74" HorizontalAlignment="Left" >
+            <Label Content="Objects:"/>
+            <Label Content="Outfits:"/>
+            <Label Content="Effects:"/>
+            <Label Content="Missiles:"/>
+        </StackPanel>
+        <StackPanel Margin="492,139,0,74" HorizontalAlignment="Left">
+            <Label x:Name="ObjectsCount1"/>
+            <Label x:Name="OutfitsCount1"/>
+            <Label x:Name="EffectsCount1"/>
+            <Label x:Name="MissilesCount1"/>
+        </StackPanel>
     </Grid>
 </Window>

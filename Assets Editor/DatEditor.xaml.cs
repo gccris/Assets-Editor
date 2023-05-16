@@ -1229,6 +1229,92 @@ namespace Assets_Editor
             output.Close();
             StatusBar.MessageQueue.Enqueue($"Compiled.", null, null, null, false, true, TimeSpan.FromSeconds(2));
         }
+
+        private void Merge_Click(object sender, RoutedEventArgs e)
+        {
+            
+            /*for (int i = MainWindow.appearances.Outfit.Count; i < MainWindow.appearancesOriginal.Outfit.Count; i++) {
+                MainWindow.appearances.Outfit.Add(MainWindow.appearancesOriginal.Outfit[i].Clone());
+                ThingsOutfit.Add(new ShowList() { Id = MainWindow.appearancesOriginal.Outfit[i].Id});
+            }*/
+            for (int i = 0; i < MainWindow.appearancesOriginal.Object.Count; i++) {
+                MainWindow.appearances.Object[i].Flags.Container = MainWindow.appearancesOriginal.Object[i].Flags.Container;
+                MainWindow.appearances.Object[i].Flags.Cumulative = MainWindow.appearancesOriginal.Object[i].Flags.Cumulative;
+                MainWindow.appearances.Object[i].Flags.Usable = MainWindow.appearancesOriginal.Object[i].Flags.Usable;
+                MainWindow.appearances.Object[i].Flags.Forceuse = MainWindow.appearancesOriginal.Object[i].Flags.Forceuse;
+                MainWindow.appearances.Object[i].Flags.Multiuse = MainWindow.appearancesOriginal.Object[i].Flags.Multiuse;
+                MainWindow.appearances.Object[i].Flags.Write = MainWindow.appearancesOriginal.Object[i].Flags.Write;
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Write != null && MainWindow.appearancesOriginal.Object[i].Flags.Write.HasMaxTextLength) {
+                    MainWindow.appearances.Object[i].Flags.Write.MaxTextLength = MainWindow.appearancesOriginal.Object[i].Flags.Write.MaxTextLength;
+                }
+
+                MainWindow.appearances.Object[i].Flags.ClearUnpass();
+                if (MainWindow.appearancesOriginal.Object[i].Flags.HasUnpass) {
+                    MainWindow.appearances.Object[i].Flags.Unpass = true;
+                }
+
+                MainWindow.appearances.Object[i].Flags.ClearUnmove();
+                if (MainWindow.appearancesOriginal.Object[i].Flags.HasUnmove) {
+                    MainWindow.appearances.Object[i].Flags.Unmove = true;
+                }
+
+                MainWindow.appearances.Object[i].Flags.ClearUnsight();
+                if (MainWindow.appearancesOriginal.Object[i].Flags.HasUnsight) {
+                    MainWindow.appearances.Object[i].Flags.Unsight = true;
+                }
+
+                MainWindow.appearances.Object[i].Flags.ClearAvoid();
+                if (MainWindow.appearancesOriginal.Object[i].Flags.HasAvoid) {
+                    MainWindow.appearances.Object[i].Flags.Avoid = true;
+                }
+
+                MainWindow.appearances.Object[i].Flags.ClearTake();
+                if (MainWindow.appearancesOriginal.Object[i].Flags.HasTake) {
+                    MainWindow.appearances.Object[i].Flags.Take = true;
+                }
+
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Clothes != null && MainWindow.appearancesOriginal.Object[i].Flags.Clothes.HasSlot ){
+                    MainWindow.appearances.Object[i].Flags.Clothes = new AppearanceFlagClothes{ Slot =  (uint)MainWindow.appearancesOriginal.Object[i].Flags.Clothes.Slot};
+                }
+                MainWindow.appearances.Object[i].Flags.DefaultAction = MainWindow.appearancesOriginal.Object[i].Flags.DefaultAction;
+                if (MainWindow.appearancesOriginal.Object[i].Flags.DefaultAction != null && MainWindow.appearancesOriginal.Object[i].Flags.DefaultAction.HasAction) {
+                    MainWindow.appearances.Object[i].Flags.DefaultAction.Action = MainWindow.appearancesOriginal.Object[i].Flags.DefaultAction.Action;
+                }
+                MainWindow.appearances.Object[i].Flags.Market = MainWindow.appearancesOriginal.Object[i].Flags.Market;
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Market != null && MainWindow.appearancesOriginal.Object[i].Flags.Market.HasCategory) {
+                    MainWindow.appearances.Object[i].Flags.Market.Category = MainWindow.appearancesOriginal.Object[i].Flags.Market.Category;
+                }
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Market != null && MainWindow.appearancesOriginal.Object[i].Flags.Market.HasTradeAsObjectId) {
+                    MainWindow.appearances.Object[i].Flags.Market.TradeAsObjectId = MainWindow.appearancesOriginal.Object[i].Flags.Market.TradeAsObjectId;
+                }
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Market != null && MainWindow.appearancesOriginal.Object[i].Flags.Market.HasShowAsObjectId) {
+                    MainWindow.appearances.Object[i].Flags.Market.TradeAsObjectId = MainWindow.appearancesOriginal.Object[i].Flags.Market.ShowAsObjectId;
+                }
+
+                
+                MainWindow.appearances.Object[i].ClearName();
+                if (MainWindow.appearancesOriginal.Object[i].HasName){
+                    MainWindow.appearances.Object[i].Name = MainWindow.appearancesOriginal.Object[i].Name;
+                }
+                MainWindow.appearances.Object[i].ClearDescription();
+                if (MainWindow.appearancesOriginal.Object[i].HasDescription) {
+                    MainWindow.appearances.Object[i].Description = MainWindow.appearancesOriginal.Object[i].Description;
+                }
+
+                MainWindow.appearances.Object[i].Flags.Clockexpire = MainWindow.appearancesOriginal.Object[i].Flags.Clockexpire;
+                MainWindow.appearances.Object[i].Flags.Expire = MainWindow.appearancesOriginal.Object[i].Flags.Expire;
+                MainWindow.appearances.Object[i].Flags.Expirestop = MainWindow.appearancesOriginal.Object[i].Flags.Expirestop;
+                
+                if (MainWindow.appearancesOriginal.Object[i].Flags.Upgradeclassification != null && MainWindow.appearancesOriginal.Object[i].Flags.Upgradeclassification.HasUpgradeClassification) {
+                    //if (MainWindow.appearances.Object[i].Flags.Upgradeclassification != null && (MainWindow.appearances.Object[i].Flags.Upgradeclassification.UpgradeClassification != MainWindow.appearancesOriginal.Object[i].Flags.Upgradeclassification.UpgradeClassification))
+                    MainWindow.appearances.Object[i].Flags.Upgradeclassification = new AppearanceFlagUpgradeClassification{ UpgradeClassification =  (uint)MainWindow.appearancesOriginal.Object[i].Flags.Upgradeclassification.UpgradeClassification};
+                }
+
+                //MainWindow.appearances.Object[i] = MainWindow.appearancesOriginal.Object[i].Clone();
+                //ThingsItem.Add(new ShowList() { Id = MainWindow.appearancesOriginal.Outfit[i].Id});
+            }
+        }
+
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
